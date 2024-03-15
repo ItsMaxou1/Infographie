@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <title>Infographie Jeux Vidéo</title>
+    <meta name="description" content="Infographie sur le thème des jeux vidéos pour parler des âges, des avantages et bien d'autres encore...">
+</head>
+<body>
+    <main>
+        <div class="section-une">
+            <h1>JOUONS !</h1>
+            <h2>INFOPGRAPHIE DU JEU VIDÉO</h2>
+        </div>
+
+        <div class="barre-hori"></div>
+
+        <div class="section-deux">
+            <h2>RÉPARTITION PAR ÂGE</h2>
+            <div class="perso-graph">
+                <div class="perso">
+                    <img src="personnage.svg" alt="personnage-cubique" class="personnage">
+                </div>
+                <div id="chartContainer"></div>
+            </div>
+        </div>
+
+        <div class="barre-hori"></div>
+
+        <div class="section-trois">
+            <div class="age">
+                <div class="age-details">
+                    <span class="chiffres-part-trois" id="age-chiffre">32</span>
+                    <span class="texte-age">âGE MOYEN</span>
+                    <span class="texte-age">D'UN JOUEUR</span>
+                </div>
+                <div class="barre-verticale"></div>
+            </div>
+            <div>
+                <img src="lana.gif" alt="" class="gif-lana">
+            </div>
+            <div class="coeur">
+                    <div class="img-coeur">
+                        <img src="coeurs-plein.svg" alt="coeur plein">
+                        <img src="coeurs-plein.svg" alt="coeur plein">
+                        <img src="coeurs-plein.svg" alt="coeur plein">
+                        <img src="coeurs.svg" alt="coeur vide">
+                        <img src="coeurs.svg" alt="coeur vide">
+                    </div>
+                    <span class="texte-coeur">2 JOUEURS SUR 5</span>
+                    <span class="texte-coeur">SONT DES FEMMES</span>
+            </div>
+        </div>
+
+        <div class="barre-hori"></div>
+
+        <div class="section-quatre">
+            <h2>LES JEUX VIDÉO PEUVENT VOUS AIDER à VOUS PERFECTIONNER.</h2>
+            <div class="console-skills">
+                <div class="console">
+                    <img src="console.png" alt="console de jeux vidéos">
+                </div>
+
+                <div class="skills">
+                    <div class="etoiles">
+                        <img src="etoiles.svg" alt="étoile">
+                        <span>MULTITÂCHE</span>
+                    </div>
+
+                    <div class="etoiles">
+                        <img src="etoiles.svg" alt="étoile">
+                        <span>CRÉATIVITÉ</span>
+                    </div>
+
+                    <div class="etoiles">
+                        <img src="etoiles.svg" alt="étoile">
+                        <span>TRAVAIL D'ÉQUIPE</span>
+                    </div>
+
+                    <div class="etoiles">
+                        <img src="etoiles.svg" alt="étoile">
+                        <span>COMPÉTENCES FINANCIÈRES</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="barre-hori"></div>
+
+        <div class="section-cinq">
+            <h2>LES JEUX VIDÉO SONT PARFAITS POUR LES ÉCHANGES SOCIAUX</h2>
+            <div class="stats-graph">
+                <div class="stats-sociaux">
+                    <span>65% DES</span>
+                    <span>JOUEURS JOUENT</span>
+                    <span>À DES JEUX AVEC</span>
+                    <span>UN AMI</span>
+                </div>
+                <div class="graph-sociaux">
+                    <div id="secondChartContainer"></div>
+                </div>
+            </div>
+            <div>
+                <img src="limule.gif" alt="GIF pour les échanges sociaux" class="gif">
+            </div>
+        </div>
+
+        <div class="barre-hori"></div>
+
+        <div class="section-six">
+            <h2>COMMENCEZ À JOUER</h2>
+            <img src="play.svg" alt="jouer">
+        </div>
+        
+        <div class="section-footer">
+            <div class="info-fournis">
+                <h3>Informations fournies par : </h3>
+            </div>
+            <div class="info-footer">
+                <span>Sources documentaires :</span>
+                <img src="limule-slime.png" alt="" class="slime">
+                <span>www.sitevraimentsuper.fr</span>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+
+    <script>
+        function renderCharts() {
+            // Premier graphique
+            var chart1 = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                theme: "dark1", // "light1", "light2", "dark1", "dark2"
+                backgroundColor: "#222222",
+                axisY: {
+                    minimum: 0,
+                    maximum: 80,
+                    interval: 20,
+                    valueFormatString: "0", // Format des valeurs de l'axe Y
+                    labelFormatter: function(e) {
+                        return e.value === 0 ? "0" : e.value.toString(); // Supprimez le suffixe pour les valeurs non nulles
+                    },
+                    lineThickness: 0 // Supprime la ligne verticale de l'axe Y
+                },
+                data: [{
+                    type: "column",
+                    yValueFormatString: "#,##0.0#\"%\"",
+                    dataPoints: [
+                        { label: "Under 18", y: 80, color: "#00B5B4" },	
+                        { label: "18-49", y: 70, color: "#009999" },	
+                        { label: "Over 50", y: 20, color: "#007F7E" },
+                        
+                    ]
+                }]
+            });
+            chart1.render();
+        }
+    
+        // Appel à la fonction pour rendre les graphiques
+        renderCharts();
+    </script>
+    
+    <script>
+        // Deuxième script pour le deuxième graphique
+        var chart2 = new CanvasJS.Chart("secondChartContainer", {
+            theme: "dark1", // "light1", "light2", "dark1", "dark2"
+            backgroundColor: "#222222",
+            exportEnabled: false,
+            animationEnabled: true,
+            data: [{
+                type: "pie",
+                startAngle: 150,
+                showInLegend: true,
+                legendText: "{label}",
+                indexLabelFontSize: 16,
+                indexLabel: "{label} - {y}%",
+                dataPoints: [
+                    { y: 35, label: "1 Player" },
+                    { y: 65, label: "2 Players", color: "#5bc0de" }
+                ]
+            }],
+        });
+        chart2.render();
+
+        // Script pour détecter le scroll et ajouter la classe d'animation
+        window.addEventListener('scroll', function() {
+            var sections = document.querySelectorAll('.section-une, .section-deux, .section-trois, .section-quatre, .section-cinq, .section-six, .section-footer, .info-footer');
+            sections.forEach(function(section) {
+                if (isElementInViewport(section)) {
+                    section.classList.add('show');
+                }
+            });
+        });
+
+        // Fonction pour vérifier si un élément est dans la vue
+        function isElementInViewport(el) {
+            var rect = el.getBoundingClientRect();
+            var windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+            var windowWidth = (window.innerWidth || document.documentElement.clientWidth);
+
+            // Pour la section cinq, vérifier si elle est entièrement dans la vue verticale et horizontale
+            if (el.classList.contains('section-cinq')) {
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= windowHeight &&
+                    rect.right <= windowWidth
+                );
+            } else {
+                // Même chose mais pour les autres sections
+                return (
+                    rect.top >= 0 &&
+                    rect.bottom <= windowHeight
+                );
+            }
+        }
+
+        window.addEventListener('scroll', function() {
+            var sections = document.querySelectorAll('.section-une, .section-deux, .section-trois, .section-quatre, .section-cinq, .section-six, section-footer, info-footer');
+            sections.forEach(function(section) {
+                if (isElementInViewport(section)) {
+                    section.classList.add('show');
+                    console.log(section.className); // Ajout de cette ligne pour voir les classes de chaque section
+                }
+            });
+        });
+
+        // Ajoutez un événement de clic à chaque barre du graphique
+        document.querySelectorAll('.section-deux .perso-graph .perso rect').forEach(function(bar, index) {
+            bar.addEventListener('click', function() {
+                // Récupérez les données du graphique
+                var data = chart1.options.data[0].dataPoints[index];
+
+                // Affichez les jeux correspondants
+                if (data.label === "Under 18") {
+                    alert("Les jeux les plus joués par les personnes de moins de 18 ans sont : Jeu 1, Jeu 2, Jeu 3...");
+                } else if (data.label === "18-49") {
+                    alert("Les jeux les plus joués par les personnes entre 18 et 49 ans sont : Jeu A, Jeu B, Jeu C...");
+                } else if (data.label === "Over 50") {
+                    alert("Les jeux les plus joués par les personnes de plus de 50 ans sont : Jeu X, Jeu Y, Jeu Z...");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
